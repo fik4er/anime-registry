@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: headFragment}"></head>
+<body>
+<header th:replace="~{fragments/navbar :: navbarFragment}"></header>
+
+<main class="container">
+    <div class="header">
+        <h1>Добро пожаловать в Аниме Реестр</h1>
+        <p>Самая свежая информация о статусе аниме</p>
+    </div>
+
+    <section class="home-banned-section">
+        <h2 style="text-align: center; margin-bottom: 30px;">Последние запреты</h2>
+
+        <div class="home-anime-grid">
+            <div th:each="anime : ${latestBannedAnimes}" class="home-anime-card">
+                <div class="home-anime-thumbnail">
+                    <img th:src="${anime.thumbnailPath}" alt="Thumbnail" th:title="${anime.titleRu}">
+                </div>
+                <div class="home-anime-info">
+                    <h3 th:text="${anime.titleRu}"></h3>
+                    <p th:text="${anime.ageRating}"></p>
+                    <div style="margin-top: 10px;">
+                        <a th:href="@{/anime/details/{id}(id=${anime.id})}" class="btn btn-sm">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
+</body>
+</html>

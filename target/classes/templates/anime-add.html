@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: headFragment}"></head>
+<body>
+<header th:replace="~{fragments/navbar :: navbarFragment}"></header>
+<main class="container">
+    <h2 th:text="${animeForm.id != null ? 'Редактировать Аниме' : 'Добавить Аниме'}"></h2>
+
+    <div th:if="${errorMessage}" class="error-message" th:text="${errorMessage}"></div>
+    <div th:if="${successMessage}" class="success-message" th:text="${successMessage}"></div>
+
+    <form class="anime-form"
+          th:action="@{${animeForm.id != null ? '/anime/edit/' + animeForm.id : '/anime/add'}}"
+          th:method="post"
+          th:object="${animeForm}">
+
+        <div class="form-group">
+            <label for="titleRu">Название (Рус.)</label>
+            <input type="text" id="titleRu" th:field="*{titleRu}" required>
+            <div th:if="${#fields.hasErrors('titleRu')}" th:errors="*{titleRu}" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="titleJp">Название (Яп.)</label>
+            <input type="text" id="titleJp" th:field="*{titleJp}">
+            <div th:if="${#fields.hasErrors('titleJp')}" th:errors="*{titleJp}" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="titleEn">Название (Англ.)</label>
+            <input type="text" id="titleEn" th:field="*{titleEn}">
+            <div th:if="${#fields.hasErrors('titleEn')}" th:errors="*{titleEn}" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="year">Год</label>
+            <input type="number" id="year" th:field="*{year}" required>
+            <div th:if="${#fields.hasErrors('year')}" th:errors="*{year}" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="ageRating">Возрастной рейтинг</label>
+            <select id="ageRating" th:field="*{ageRating}" required>
+                <option value="0+">0+</option>
+                <option value="12+">12+</option>
+                <option value="16+">16+</option>
+                <option value="18+">18+</option>
+            </select>
+            <div th:if="${#fields.hasErrors('ageRating')}" th:errors="*{ageRating}" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label>
+                <input type="checkbox" id="isBanned" th:field="*{isBanned}"> Запрещено
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="thumbnailPath">Путь к изображению (например, /images/anime-name.jpg)</label>
+            <input type="text" id="thumbnailPath" th:field="*{thumbnailPath}">
+            <div th:if="${#fields.hasErrors('thumbnailPath')}" th:errors="*{thumbnailPath}" class="error"></div>
+            <small>Поместите изображения в папку /src/main/resources/static/images/</small>
+        </div>
+        <div class="form-group">
+            <label for="description">Описание</label>
+            <textarea id="description" th:field="*{description}" rows="4"></textarea>
+            <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="error"></div>
+        </div>
+        <div class="form-group">
+            <label for="genreNames">Жанры</label>
+            <div class="genre-selection-container">
+                <div class="existing-genres">
+                    <label>Выберите существующие жанры:</label>
+                    <select id="genreNames" th:field="*{genreNames}" multiple="multiple" style="width: 100%; height: 120px;">
+                        <option th:each="genre : ${existingGenres}"
+                                th:value="${genre}"
+                                th:text="${genre}"
+                                th:selected="${animeForm.genreNames != null and #lists.contains(animeForm.genreNames, genre)}"></option>
+                    </select>
+                </div>
+                <div class="new-genres" style="margin-top: 10px;">
+                    <label>Или добавьте новые жанры (через запятую):</label>
+                    <input type="text" id="newGenreInput" name="newGenres" placeholder="Введите жанры через запятую">
+                    <small>Пример: Комедия, Романтика, Сёнэн</small>
+                </div>
+            </div>
+            <div th:if="${#fields.hasErrors('genreNames')}" th:errors="*{genreNames}" class="error"></div>
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <button class="btn" type="submit" th:text="${animeForm.id != null ? 'Сохранить изменения' : 'Добавить'}"></button>
+
+            <div th:if="${animeForm.id != null}">
+                <form th:action="@{/anime/delete/{id}(id=${animeForm.id})}" th:method="post">
+                    <button class="btn btn-danger" type="submit" onclick="return confirm('Вы уверены, что хотите удалить это аниме?');">Удалить</button>
+                </form>
+            </div>
+        </div>
+    </form>
+</main>
+<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
+</body>
+</html>

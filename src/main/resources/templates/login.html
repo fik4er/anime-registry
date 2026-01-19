@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{fragments/head :: headFragment}"></th:block>
+<body>
+<header th:replace="~{fragments/navbar :: navbarFragment}"></header>
+<main>
+    <h2>Вход</h2>
+    <div th:if="${errorMessage}" th:text="${errorMessage}"></div>
+    <form th:action="@{/users/login}" th:method="post">
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <input type="checkbox" id="remember-me" name="remember-me">
+            <label for="remember-me">Запомнить меня</label>
+        </div>
+        <button type="submit">Войти</button>
+    </form>
+    <p>Нет аккаунта? <a href="/users/register">Зарегистрируйтесь</a></p>
+</main>
+<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
+</body>
+</html>

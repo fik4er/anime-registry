@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: headFragment}"></head>
+<body>
+<header th:replace="~{fragments/navbar :: navbarFragment}"></header>
+
+<main class="container">
+    <section class="filters">
+        <form th:action="@{/anime/all}" method="get" class="filter-form">
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <input type="text" name="search" th:value="${search}" placeholder="Поиск по названию..." class="form-group" style="margin-bottom: 0; flex-grow: 1;">
+
+                <select name="banned">
+                    <option value="">Все статусы</option>
+                    <option value="true" th:selected="${banned == true}">Только запрещенные</option>
+                    <option value="false" th:selected="${banned == false}">Только разрешенные</option>
+                </select>
+
+                <select name="ageRating">
+                    <option value="">Все рейтинги</option>
+                    <option th:each="rating : ${allAgeRatings}"
+                            th:value="${rating}"
+                            th:text="${rating}"
+                            th:selected="${rating == ageRating}"></option>
+                </select>
+
+                <select name="genre">
+                    <option value="">Все жанры</option>
+                    <option th:each="genre : ${allGenres}"
+                            th:value="${genre}"
+                            th:text="${genre}"
+                            th:selected="${genre == genreName}"></option>
+                </select>
+
+                <button type="submit" class="btn">Применить</button>
+                <a th:href="@{/anime/all}" class="btn btn-secondary">Сбросить</a>
+            </div>
+        </form>
+    </section>
+
+    <section class="anime-catalog">
+        <div class="anime-grid">
+            <div th:each="anime : ${animes}" class="anime-card">
+                <div class="anime-thumbnail">
+                    <div class="status-badge" th:classappend="${anime.isBanned} ? 'banned' : 'safe'">
+                        <span th:text="${anime.isBanned} ? 'Запрещено' : 'Разрешено'"></span>
+                    </div>
+                    <img th:src="${anime.thumbnailPath}" alt="Thumbnail" th:title="${anime.titleRu}">
+                </div>
+
+                <div class="anime-info">
+                    <h3 th:text="${anime.titleRu}"></h3>
+                    <div class="anime-meta">
+                        <span th:text="${anime.year}"></span> |
+                        <span th:text="${anime.ageRating}"></span>
+                    </div>
+                    <div class="genres">
+                        <span th:each="g : ${anime.genres}" th:text="${g}" class="genre-tag"></span>
+                    </div>
+                    <div class="anime-actions">
+                        <a th:href="@{/anime/details/{id}(id=${anime.id})}" class="btn btn-sm" style="width: 100%;">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:if="${#lists.isEmpty(animes)}" class="empty-state">
+            <p>Аниме не найдены по заданным фильтрам.</p>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
+</body>
+</html>

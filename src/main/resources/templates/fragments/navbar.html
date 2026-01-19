@@ -1,0 +1,20 @@
+<nav th:fragment="navbarFragment" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <div class="nav-container">
+        <div class="logo">
+            <a href="/">Аниме Реестр</a>
+        </div>
+        <ul>
+            <li><a href="/">Главная</a></li>
+            <li><a href="/anime/all">Все Аниме</a></li>
+            <li sec:authorize="hasRole('ADMIN')"><a href="/anime/add">Добавить Аниме</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/profile">Профиль</a></li>
+            <li sec:authorize="isAuthenticated()">
+                <form th:action="@{/users/logout}" th:method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-secondary" style="margin-left: 15px;">Выйти</button>
+                </form>
+            </li>
+            <li sec:authorize="!isAuthenticated()"><a href="/users/login">Вход</a></li>
+            <li sec:authorize="!isAuthenticated()"><a href="/users/register">Регистрация</a></li>
+        </ul>
+    </div>
+</nav>

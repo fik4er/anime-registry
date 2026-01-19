@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: headFragment}"></head>
+<body>
+<header th:replace="~{fragments/navbar :: navbarFragment}"></header>
+<main class="container">
+
+    <div style="display: flex; gap: 30px; flex-wrap: wrap; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+        <div style="flex: 0 0 300px;">
+            <img th:src="${animeDetails.thumbnailPath}" alt="Thumbnail" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        </div>
+        <div style="flex: 1;">
+            <h1 style="margin-top: 0;" th:text="${animeDetails.titleRu}"></h1>
+            <h3 style="color: #6b7280; font-weight: 400;" th:text="${animeDetails.titleJp}"></h3>
+
+            <div style="margin: 20px 0;">
+                <p><strong>Год:</strong> <span th:text="${animeDetails.year}"></span></p>
+                <p><strong>Рейтинг:</strong> <span th:text="${animeDetails.ageRating}"></span></p>
+                <p>
+                    <strong>Статус:</strong>
+                    <span th:class="'status-badge ' + (${animeDetails.isBanned} ? 'banned' : 'safe')"
+                          style="position: static; display: inline-block; margin-left: 5px;"
+                          th:text="${animeDetails.isBanned} ? 'Запрещено' : 'Разрешено'"></span>
+                </p>
+                <p><strong>Вероятность блокировки:</strong> <span th:text="${#numbers.formatDecimal(animeDetails.probabilityOfBlock, 0, 2)} + '%'"></span></p>
+            </div>
+            <p th:text="${animeDetails.description}"></p>
+            <div style="margin: 20px 0;">
+                <strong>Жанры:</strong><br>
+                <div>
+                    <span th:each="g : ${animeDetails.genres}" th:text="${g}" class="genre-tag" style="margin-right: 5px; margin-bottom: 5px;"></span>
+                </div>
+            </div>
+            <div th:if="${animeDetails.banRecords}" style="background-color: #fff1f2; padding: 15px; border-radius: 8px; border-left: 4px solid #f43f5e; margin-top: 20px;">
+                <h4 style="margin-top: 0;">Записи о запрете:</h4>
+                <ul style="padding-left: 20px;">
+                    <li th:each="record : ${animeDetails.banRecords}">
+                        <span th:text="${record.banDate}"></span>: <span th:text="${record.reason}"></span>
+                    </li>
+                </ul>
+            </div>
+            <div style="margin-top: 30px; display: flex; gap: 10px;">
+                <div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+                    <a class="btn" th:href="@{/anime/edit/{id}(id=${animeDetails.id})}">Редактировать</a>
+                    <form th:action="@{/anime/delete/{id}(id=${animeDetails.id})}" th:method="post" style="display: inline;">
+                        <button class="btn btn-danger" type="submit" onclick="return confirm('Вы уверены, что хотите удалить это аниме?');">Удалить</button>
+                    </form>
+                </div>
+                <!-- Кнопка для юзера -->
+                <form th:if="${#authentication.name != null and !#authorization.expression('hasRole(''ROLE_ADMIN'')')}" th:action="@{/profile/favorites/add/{id}(id=${animeDetails.id})}" th:method="post">
+                    <button class="btn" type="submit">♥ Добавить в любимые</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
+</body>
+</html>

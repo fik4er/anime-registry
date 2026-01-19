@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3573ea5e-c5a3-4142-8536-9ae65699b0df" name="Changes" comment="upd" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;fik4er&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/fik4er/anime-registry.git&quot;,
+    &quot;accountId&quot;: &quot;c30164f2-341d-4b3a-9cf5-f32ac81256fc&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="customMavenHome" value="C:\apache-maven-3.9.11" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="35OdxpJeM2GpP9THwAteMs9RpZ3" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AnimeRegistryApiApplication.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+    "Maven.anime-registry-api [compiler:testCompile].executor": "Run",
+    "Maven.anime-registry-app [clean,compile...].executor": "Run",
+    "Maven.anime-registry-app [clean,package...].executor": "Run",
+    "Maven.anime-registry-app [clean,package].executor": "Run",
+    "Maven.anime-registry-app [package,-DskipTests].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Student/Documents/anime-registry-api",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Student\Documents\anime-registry-api" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\spide\Yandex.Disk\U\web\anime-registry-api\src\main\resources\static" />
+      <recent name="C:\Users\spide\Yandex.Disk\U\web\anime-registry-api\src\main\resources\static\images" />
+      <recent name="C:\Users\spide\Yandex.Disk\U\web\anime-registry-api\src\main\resources\templates" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn compiler:testCompile" />
+      <command value="mvn clean package" />
+      <command value="mvn clean compile -DskipTests" />
+      <command value="mvn package -DskipTests" />
+      <command value="mvn clean package -DskipTests" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3573ea5e-c5a3-4142-8536-9ae65699b0df" name="Changes" comment="" />
+      <created>1762985301630</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1762985301630</updated>
+    </task>
+    <task id="LOCAL-00001" summary="initial">
+      <option name="closed" value="true" />
+      <created>1765038033863</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1765038033863</updated>
+    </task>
+    <task id="LOCAL-00002" summary="upd">
+      <option name="closed" value="true" />
+      <created>1765048605860</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1765048605860</updated>
+    </task>
+    <task id="LOCAL-00003" summary="upd">
+      <option name="closed" value="true" />
+      <created>1765054530333</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1765054530333</updated>
+    </task>
+    <task id="LOCAL-00004" summary="upd">
+      <option name="closed" value="true" />
+      <created>1765397712840</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1765397712840</updated>
+    </task>
+    <task id="LOCAL-00005" summary="upd">
+      <option name="closed" value="true" />
+      <created>1765405820411</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1765405820411</updated>
+    </task>
+    <task id="LOCAL-00006" summary="upd">
+      <option name="closed" value="true" />
+      <created>1765406207242</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1765406207242</updated>
+    </task>
+    <task id="LOCAL-00007" summary="upd">
+      <option name="closed" value="true" />
+      <created>1765413250255</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1765413250255</updated>
+    </task>
+    <task id="LOCAL-00008" summary="upd">
+      <option name="closed" value="true" />
+      <created>1765984062693</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1765984062693</updated>
+    </task>
+    <task id="LOCAL-00009" summary="upd">
+      <option name="closed" value="true" />
+      <created>1765984979318</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1765984979318</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="initial" />
+    <MESSAGE value="upd" />
+    <option name="LAST_COMMIT_MESSAGE" value="upd" />
+  </component>
+</project>

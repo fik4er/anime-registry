@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: headFragment}"></head>
+<body>
+<header th:replace="~{fragments/navbar :: navbarFragment}"></header>
+
+<main class="container">
+    <div class="profile-header">
+        <div>
+            <h1>Личный кабинет</h1>
+            <p><strong>Email:</strong> <span th:text="${userProfile.email}"></span></p>
+        </div>
+    </div>
+
+    <section class="subscription-section">
+        <h3>Управление уведомлениями</h3>
+
+        <div th:if="${userProfile.subscribed}" class="subscription-status active">
+            <p>Вы подписаны на уведомления. Область:
+                <strong th:text="${userProfile.subscriptionScope == 'ALL' ? 'Все изменения' : 'Только блокировки'}"></strong>
+            </p>
+            <form th:action="@{/subscribe/unsubscribe}" th:method="post">
+                <button type="submit" class="btn btn-danger">Отписаться</button>
+            </form>
+        </div>
+
+        <div th:if="${!userProfile.subscribed}" class="subscription-status">
+            <p>Вы еще не подписаны на обновления реестра.</p>
+            <form th:action="@{/subscribe}" th:method="post" class="sub-form">
+                <select name="notificationScope">
+                    <option value="ALL">Все изменения (блокировки и разблокировки)</option>
+                    <option value="BANNED_ONLY">Только новые запреты</option>
+                </select>
+                <button type="submit" class="btn">Подписаться</button>
+            </form>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="favorites-section">
+        <h3>Ваше избранное</h3>
+        <div class="anime-grid" th:if="${not #lists.isEmpty(userProfile.favorites)}">
+            <div th:each="anime : ${userProfile.favorites}" class="anime-card">
+                <div class="anime-thumbnail">
+                    <img th:src="${anime.thumbnailPath}" alt="${anime.titleRu}">
+                </div>
+                <div class="anime-info">
+                    <h4 th:text="${anime.titleRu}"></h4>
+                    <p th:text="${anime.year}"></p>
+                    <div class="anime-actions">
+                        <a th:href="@{/anime/details/{id}(id=${anime.id})}" class="btn btn-sm">Перейти</a>
+                        <form th:action="@{/profile/favorites/remove/{id}(id=${anime.id})}" th:method="post">
+                            <button type="submit" class="btn-link-danger">Удалить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${#lists.isEmpty(userProfile.favorites)}" class="empty-state">
+            <p>В вашем списке избранного пока ничего нет.</p>
+            <a href="/anime/all" class="btn btn-secondary">Перейти в каталог</a>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
+</body>
+</html>

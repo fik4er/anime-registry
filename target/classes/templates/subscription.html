@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{fragments/head :: headFragment}"></th:block>
+<body>
+<header th:replace="~{fragments/navbar :: navbarFragment}"></header>
+<main>
+    <h2>Оформление подписки</h2>
+    <div th:if="${errorMessage}" th:text="${errorMessage}"></div>
+    <div th:if="${successMessage}" th:text="${successMessage}"></div>
+    <form th:action="@{/subscribe}" th:method="post" th:object="${subscriptionForm}">
+        <div>
+            <label>
+                <input type="radio" th:field="*{notificationScope}" value="favorites" required> Только из любимых
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="radio" th:field="*{notificationScope}" value="18plus" required> Только 18+
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="radio" th:field="*{notificationScope}" value="all" required> Все запреты
+            </label>
+        </div>
+        <button type="submit">Подписаться</button>
+    </form>
+    <form th:action="@{/subscribe/unsubscribe}" th:method="post">
+        <button type="submit">Отписаться</button>
+    </form>
+</main>
+<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
+</body>
+</html>
